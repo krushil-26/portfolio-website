@@ -124,7 +124,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+          className={`lg:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-100 opacity-100 mt-4" : "max-h-0 opacity-0"
             }`}
         >
           <div className="glass dark:glass-dark rounded-2xl p-4 space-y-1">

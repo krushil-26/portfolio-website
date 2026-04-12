@@ -13,18 +13,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Krushil Thakkar",
-  description: "Krushil Thakkar Porfolio",
-  icons: {
-    icon: "/fav.png", // Path to your icon in the /public folder
-    shortcut: "/shortcut-static-icon.png",
-    apple: "/apple-touch-icon.png",
-    // You can also specify different sizes
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "/apple-touch-icon-precomposed.png",
-    },
-  },  
+  title: {
+    default: "Krushil Thakkar | Senior Frontend Developer",
+    template: "%s | Krushil Thakkar",
+  },
+  description: "Senior Frontend Developer specializing in React.js, Next.js, and modern web technologies. View my portfolio and projects.",
+  keywords: ["Frontend Developer", "React Developer", "Next.js Portfolio", "Krushil Thakkar", "Software Engineer"],
+  authors: [{ name: "Krushil Thakkar" }],
+  creator: "Krushil Thakkar",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://krushilthakkarportfolio.vercel.app/",
+    siteName: "Krushil Thakkar Portfolio",
+    title: "Krushil Thakkar | Senior Frontend Developer",
+    description: "Building high-performance web applications with React and Next.js.",
+    images: [
+      {
+        url: "/og-image.png", // Create a 1200x630 image and put it in /public
+        width: 1200,
+        height: 630,
+        alt: "Krushil Thakkar Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krushil Thakkar | Senior Frontend Developer",
+    description: "Senior Frontend Developer specializing in React.js and Next.js.",
+    creator: "@yourtwitterhandle", // Add your handle
+    images: ["/og-image.png"], 
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
