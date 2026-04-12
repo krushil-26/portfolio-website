@@ -41,14 +41,24 @@ export default function Navbar() {
   const scrollTo = (href: string) => {
     setIsOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+    if (el) {
+      const offset = 40; // Change this to the number of pixels you want to stay above
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "py-3 bg-white border-slate-200 shadow-sm"
-          : "py-5 bg-white "
+        ? "py-3 bg-white border-slate-200 shadow-sm"
+        : "py-5 bg-white "
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +66,7 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => scrollTo("#home")}
-            className="flex items-center gap-2 group"
+            className="flex cursor-pointer items-center gap-2 group"
             aria-label="Go to top"
           >
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform duration-300">
@@ -73,9 +83,9 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeSection === link.href.slice(1)
-                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40"
-                    : "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/20"
+                className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeSection === link.href.slice(1)
+                  ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40"
+                  : "text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/20"
                   }`}
               >
                 {link.label}
@@ -123,8 +133,8 @@ export default function Navbar() {
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
                 className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${activeSection === link.href.slice(1)
-                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40"
-                    : "text-slate-600 dark:text-slate-400"
+                  ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40"
+                  : "text-slate-600 dark:text-slate-400"
                   }`}
               >
                 {link.label}
