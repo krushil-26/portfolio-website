@@ -32,7 +32,7 @@ export default function Navbar() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0, rootMargin: "-20% 0px -65% 0px" }
     );
     document.querySelectorAll("section[id]").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -40,6 +40,7 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setIsOpen(false);
+    setActiveSection(href.slice(1));
     const el = document.querySelector(href);
 
     if (el) {
